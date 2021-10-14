@@ -370,7 +370,7 @@ var options = [{
         > 
           <View style={{ flex: 2, color: "#000" }}>
             <Image
-              source={require("../assets/bottomCard/map_green.png")}
+              source={require("../assets/map2.png")}
               style={styles.Languagecard}
             ></Image>
           </View>

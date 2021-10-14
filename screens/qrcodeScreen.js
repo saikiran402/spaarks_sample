@@ -25,6 +25,7 @@ import moment from 'moment';
 import { FlatList } from "react-native-gesture-handler";
 import AsyncStorage from "@react-native-community/async-storage";
 const GLOBAL = require('../Globals');
+import {requestMultiple, PERMISSIONS} from 'react-native-permissions';
 
 
 import QrcodeMenuScreen from './QrcodeMenuScreen'
@@ -36,6 +37,15 @@ const qrcodeScreen = ({navigation, route,token,profilePic,name,userId,isConnecte
   const [isLoggedIn,setisLoggedIn]  = useState(false)
   const [refreshing, setRefreshing] = React.useState(false);
   async function getData(){
+
+
+
+
+   
+
+
+
+
     setQrdata(JSON.stringify({
       userId:userId,
       time:Date.now()

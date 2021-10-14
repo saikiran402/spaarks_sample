@@ -78,6 +78,7 @@ const BookmarksScreen = ({ navigation, item, userId }) => {
   }
   const renderPostCard = ({ item, index }) =>{
     return(
+      <>
       <PostCard 
       item={item}
       bookmarked={true} 
@@ -86,6 +87,7 @@ const BookmarksScreen = ({ navigation, item, userId }) => {
       from={"Bookmark"}
       getDataforBookmarks={getData}
       navigation={navigation}/>
+      </>
     )
   }
 

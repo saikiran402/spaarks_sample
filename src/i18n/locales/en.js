@@ -659,7 +659,7 @@ export default {
   "UPI Details":"UPI Details",
   "to cash in the rewards you earned":"to cash in the rewards you earned",
   "Add your":"Add your",
-  "in the rewards you earned":"in the rewards you earned",
+  "in the rewards you earned":"",
   "UPI ID":"UPI ID",
   "How to earn Rewards":"How to earn Rewards",
   "Ask a selleter to register in Spaarks":"Ask a selleter to register in Spaarks",

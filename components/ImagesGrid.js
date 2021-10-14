@@ -377,7 +377,7 @@ const ImagePlaceHolder = () =>{
                                                     {
                                                             overlay[i].showOverlay?
                                                             <>
-                                                                                                                                                                                                                 <TouchableOpacity activeOpacity={1} onPress={() => { navigation.navigate('ViewFullScreenImagesScreen', { photos: post.photos, content: post.content, name: post.uservisibility.name, profilePic: post.uservisibility.profilePic, time: post.createdAt, post: post, showHeader: true,index:i+1 }) }}>
+                                                                                                                                                                                                                 <TouchableOpacity activeOpacity={1} onPress={() => { navigation.navigate('ViewFullScreenImagesScreen', { photos: post.photos, content: post.content, name: post.uservisibility.name, profilePic: post.uservisibility.profilePic, time: post.createdAt, post: post, showHeader: true,index:i }) }}>
 
                                                             <View style={{position:'absolute',zIndex:1,top:10,left:10,zIndex:1,top:20,left:10}}>
                                                              <Image key={i} PlaceholderContent={<ActivityIndicator />}source={{uri:'https://lolfilter.com/files/thumbnails/455062882178828.png'}} style={{height:30,width:30,justifyContent:'center',left:75}}/>
@@ -387,7 +387,7 @@ const ImagePlaceHolder = () =>{
                                                              </TouchableOpacity>
                                                             </>
                                                             :
-                                                            <TouchableOpacity activeOpacity={1} onPress={() => { navigation.navigate('ViewFullScreenImagesScreen', { photos: post.photos, content: post.content, name: post.uservisibility.name, profilePic: post.uservisibility.profilePic, time: post.createdAt, post: post, showHeader: true,index:i+1 }) }}>
+                                                            <TouchableOpacity activeOpacity={1} onPress={() => { navigation.navigate('ViewFullScreenImagesScreen', { photos: post.photos, content: post.content, name: post.uservisibility.name, profilePic: post.uservisibility.profilePic, time: post.createdAt, post: post, showHeader: true,index:i }) }}>
 
                                                             <Image key={i} PlaceholderContent={<ActivityIndicator />}source={{ uri: list }} cache={"force-cache"} style={{ height: 125, width: Dimensions.get('window').width / 2 }} />
 </TouchableOpacity>

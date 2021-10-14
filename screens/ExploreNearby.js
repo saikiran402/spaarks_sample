@@ -86,10 +86,10 @@ const ExploreNearby = ({ navigation, route }) => {
                         {/* <Text style={{color:'#000',padding:10,paddingLeft:5}}>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </Text> */}
                         </View>
                     <View style={{padding:5,marginTop:0}}>
-                        <Text style={{color:'#000',padding:10,paddingLeft:5,textAlign:'center',color:'#63cdff',fontSize:16,fontWeight:'bold'}}>How Explore Works</Text>
+                        <Text style={{color:'#000',padding:10,paddingLeft:5,textAlign:'center',color:'#6fa4e9',fontSize:16,fontWeight:'bold'}}>How Explore Works</Text>
                         <Text style={{color:'#000',padding:10,paddingLeft:5}}>For your spaark to be visible on the map, enable option below while creating a new spaark.
 Useful for Sellers, Service givers, event location etc.</Text>
-                            <Image source={require('../assets/mymap.png')} style={{height:90,width:'100%',borderRadius:10}}/>
+                            <Image source={require('../assets/ss_explore.jpg')} style={{height:200,width:'100%',borderRadius:10,resizeMode:'contain',marginTop:-20}}/>
                             </View>
 
                             
@@ -100,8 +100,8 @@ Useful for Sellers, Service givers, event location etc.</Text>
             </View>
             </ImageBackground>
             </ScrollView>
-            <TouchableOpacity onPress={()=>askLocation()}>
-            <View style={{ position: 'absolute', bottom: 0, width: '90%', backgroundColor: '#63cdff', padding: 10, margin: 0,borderRadius:0,width:'100%' }}>
+            <TouchableOpacity onPress={()=>navigation.goBack()}>
+            <View style={{ position: 'absolute', bottom: 0, width: '90%', backgroundColor: '#6fa4e9', padding: 10, margin: 0,borderRadius:0,width:'100%' }}>
                     <Text style={{ color: '#fff', paddign: 10, textAlign: 'center' }}>{"Take me back to explore"}</Text>
             </View>
             </TouchableOpacity>

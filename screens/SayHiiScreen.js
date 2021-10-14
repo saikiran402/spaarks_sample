@@ -636,6 +636,7 @@ const SayHiiScreen = ({ navigation, isConnected, token, chat_roster_main, allMap
       <PostCard
         item={item}
         index={index}
+        bookmarked={item.bookmarked}
         banners={banners}
         showBanner={false}
         navigation={navigation} />

@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { TouchableOpacity , SafeAreaView , Pressable } from 'react-native';
+import React, { useEffect, useState } from 'react';
+import { TouchableOpacity,Alert,Linking , SafeAreaView , Pressable } from 'react-native';
 import { Dimensions } from 'react-native';
 import { View, Text, Button, StyleSheet,Image,ScrollView } from 'react-native';
 import { createMaterialBottomTabNavigator } from "@react-navigation/material-bottom-tabs";
@@ -14,9 +14,37 @@ import AsyncStorage from '@react-native-community/async-storage';
 import { connect, useDispatch, useReducer } from "react-redux";
 import chatReducers from "../reducers/chatReducers";
 const GLOBAL = require('../Globals');
+import {requestMultiple, PERMISSIONS} from 'react-native-permissions';
+
 const QrForPartnerScreen = ({navigation,route}) => {
   const Chatdispatcher = useDispatch(chatReducers);
     const [hasPermission, setHasPermission] = useState("granted");
+
+
+    async function checkPermission(){
+      requestMultiple([PERMISSIONS.IOS.CAMERA]).then((statuses) => {
+        console.log('Camera', statuses[PERMISSIONS.IOS.CAMERA]);
+        if(statuses[PERMISSIONS.IOS.CAMERA] == 'blocked'){
+          Alert.alert(
+            "Can not use camera",
+          "Please allow Spaarks to access your camera in 'Settings > Privacy > Camera",
+            [
+              {
+                text: "Cancel",
+                onPress: () => console.log("Cancel Pressed"),
+                style: "cancel"
+              },
+              { text: "Settings", onPress: () => Linking.openURL('app-settings:') }
+            ]
+          );
+        }
+        // console.log('FaceID', statuses[PERMISSIONS.IOS.FACE_ID]);
+      });
+    }
+
+    useEffect(()=>{
+      checkPermission()
+    },[])
     async function clickedLink(){
         Clipboard.setString('https://www.spaarksweb.com')
         // alert('Message copied')

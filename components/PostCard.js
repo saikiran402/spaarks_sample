@@ -188,6 +188,7 @@ const PostCard = ({ navigation, token, Userpreferences, parentClick, isConnected
     },
   ]);
   async function clickedChat(l) {
+    normalCallOption()
     var jwt = await AsyncStorage.getItem('token');
     if (String(jwt) != "null") {
     if (isConnected) {
@@ -1057,7 +1058,7 @@ console.log(resp)
           navigation.navigate('newInfoStepperSayHii', { questionNo: 2, question: 'Make Friends', excluding: [], featureName: 'greet', mediaP: [], mediaV: [] })
 
         }else if(banners.featureName == "announce"){
-          navigation.navigate('NewInfoStepperScreen', { questionNo: 1, question: I18n.t('Announce something'), excluding: [], featureName: 'showtime', mediaP: [], mediaV: [] })
+          navigation.navigate('NewInfoStepperScreen', { questionNo: 1, question: I18n.t('Post something Social'), excluding: [], featureName: 'showtime', mediaP: [], mediaV: [] })
 
         }else{
         navigation.navigate('PostSpecifics')
