@@ -1133,7 +1133,7 @@ const quickReplies=[
 
     console.log(route.params)
     setUnreadToZero()
-    // getMessagesafterLastMessage()
+    // route.params.connections.()
     return () => { };
   }, []);
 
@@ -1175,279 +1175,279 @@ const quickReplies=[
   const dispatch = useDispatch(ActualChatdispatcher);
 
 
-//   async function getMessagesafterLastMessage(){
-//     var userIID = await AsyncStorage.getItem('jid_main');
-//       console.log('last message',this_messages[0])
-//       await axios
-//       .post(
-//         `http://103.27.86.24:3005/getmessagesbytime/${userIID.substr(0,24)}/${route.params.jid.substr(0,24)}`,{
-//           from:String(moment(this_messages[0].unique).local().format('YYYY-MM-DD HH:mm:ss')),
-//           to:String(moment(Date.now()).local().format('YYYY-MM-DD HH:mm:ss')),
-//         }
-//       )
-//       .then((resp) => {
-//         console.log('FTFTFTFTFTFTF',resp.data.data)
-// if(resp.data.data.length>0){
-//         resp.data.data.forEach((list)=>{
-//           var message = JSON.parse(list.txt);
-//           // this_chat.messages.splice(0, 0, {
-//           //   content: messages[0].text,
-//           //   text: messages[0].text,
-//           //   messageType: 'chat',
-//           //   messageId: unique,
-//           //   createdAt: messages[0].createdAt,
-//           //   _id: Date.now(),
-//           //   unique: unique,
-//           //   type: "chat",
-//           //   user: {
-//           //     _id: 2,
-//           //   },
-//           // });
-//           if (message.type == "chat") {
-//             if(list.xml.includes(`from='${route.params.jid.substr(0,24)}`)){
-//               var mymes = {
-//                 content: message.content,
-//                 text: message.content,
-//                 createdAt: list.created_at,
-//                 messageType:message.type,
-//                 _id: Date.now()* Math.random(),
-//                 unique: message.unique,
-//                 messageId: message.unique,
-//                 type: "chat",
-//                 user: {
-//                   _id: 1,
-//                   name: route.params.name,
-//                   avatar: route.params.profilePic,
-//                 },
-//               };
-//               this_chat.messages.splice(0, 0, mymes);
-//               this_chat.message = message.content;
-//             }else{
-//               var mymes = {
-//                 content: message.content,
-//                 text: message.content,
-//                 messageType:message.type,
-//                 createdAt: list.created_at,
-//                 _id: Date.now()* Math.random(),
-//                 unique: message.unique,
-//                 messageId: message.unique,
-//                 type: "chat",
-//                 user: {
-//                   _id: 2,
-//                   name: route.params.name,
-//                   avatar: route.params.profilePic,
-//                 },
-//               };
-//               this_chat.messages.splice(0, 0, mymes);
-//               this_chat.message = message.content;
-//             }
+  async function getMessagesafterLastMessage(){
+    var userIID = await AsyncStorage.getItem('jid_main');
+      console.log('last message',this_messages[0])
+      await axios
+      .post(
+        `http://103.27.86.24:3005/getmessagesbytime/${userIID.substr(0,24)}/${route.params.jid.substr(0,24)}`,{
+          from:String(moment(this_messages[0].unique).local().format('YYYY-MM-DD HH:mm:ss')),
+          to:String(moment(Date.now()).local().format('YYYY-MM-DD HH:mm:ss')),
+        }
+      )
+      .then((resp) => {
+        console.log('FTFTFTFTFTFTF',resp.data.data)
+if(resp.data.data.length>0){
+        resp.data.data.forEach((list)=>{
+          var message = JSON.parse(list.txt);
+          // this_chat.messages.splice(0, 0, {
+          //   content: messages[0].text,
+          //   text: messages[0].text,
+          //   messageType: 'chat',
+          //   messageId: unique,
+          //   createdAt: messages[0].createdAt,
+          //   _id: Date.now(),
+          //   unique: unique,
+          //   type: "chat",
+          //   user: {
+          //     _id: 2,
+          //   },
+          // });
+          if (message.type == "chat") {
+            if(list.xml.includes(`from='${route.params.jid.substr(0,24)}`)){
+              var mymes = {
+                content: message.content,
+                text: message.content,
+                createdAt: list.created_at,
+                messageType:message.type,
+                _id: Date.now()* Math.random(),
+                unique: message.unique,
+                messageId: message.unique,
+                type: "chat",
+                user: {
+                  _id: 1,
+                  name: route.params.name,
+                  avatar: route.params.profilePic,
+                },
+              };
+              this_chat.messages.splice(0, 0, mymes);
+              this_chat.message = message.content;
+            }else{
+              var mymes = {
+                content: message.content,
+                text: message.content,
+                messageType:message.type,
+                createdAt: list.created_at,
+                _id: Date.now()* Math.random(),
+                unique: message.unique,
+                messageId: message.unique,
+                type: "chat",
+                user: {
+                  _id: 2,
+                  name: route.params.name,
+                  avatar: route.params.profilePic,
+                },
+              };
+              this_chat.messages.splice(0, 0, mymes);
+              this_chat.message = message.content;
+            }
   
-//           }
-//           if (message.type == "image") {
-//             if(list.xml.includes(`from='${route.params.jid.substr(0,24)}`)){
-//               var mymes = {
-//                 content: message.content,
-//                 image: message.content,
-//                 messageType:message.type,
-//                 createdAt: list.created_at,
-//                 _id: Date.now()* Math.random(),
-//                 unique: message.unique,
-//                 messageId: message.unique,
-//                 // sent: true,
-//                 // received: true,
-//                 type: "chat",
-//                 user: {
-//                   _id: 1,
-//                   name: eachuser.name,
-//                   avatar: eachuser.profilePic,
-//                 },
-//               };
-//               this_chat.messages.splice(0, 0, mymes);
-//               this_chat.message = 'IMAGE';
-//               var newImage = {
-//                 url:message.content
-//               };
-//               this_chat.photos.push(newImage)
-//             }else{
-//               var mymes = {
-//                 content: message.content,
-//                 image: message.content,
-//                 messageType:message.type,
-//                 createdAt: list.created_at,
-//                 _id: Date.now()* Math.random(),
-//                 unique: message.unique,
-//                 messageId: message.unique,
-//                 // sent: true,
-//                 // received: true,
-//                 type: "chat",
-//                 user: {
-//                   _id: 2,
-//                   name: route.params.name,
-//                   avatar: route.params.profilePic,
-//                 },
-//               };
-//               this_chat.messages.splice(0, 0, mymes);
-//               this_chat.message = 'IMAGE';
-//               var newImage = {
-//               url:message.content
-//               };
-//             this_chat.photos.push(newImage)
-//             }
-//           }
-//           if (message.type == "video") {
+          }
+          if (message.type == "image") {
+            if(list.xml.includes(`from='${route.params.jid.substr(0,24)}`)){
+              var mymes = {
+                content: message.content,
+                image: message.content,
+                messageType:message.type,
+                createdAt: list.created_at,
+                _id: Date.now()* Math.random(),
+                unique: message.unique,
+                messageId: message.unique,
+                // sent: true,
+                // received: true,
+                type: "chat",
+                user: {
+                  _id: 1,
+                  name: eachuser.name,
+                  avatar: eachuser.profilePic,
+                },
+              };
+              this_chat.messages.splice(0, 0, mymes);
+              this_chat.message = 'IMAGE';
+              var newImage = {
+                url:message.content
+              };
+              this_chat.photos.push(newImage)
+            }else{
+              var mymes = {
+                content: message.content,
+                image: message.content,
+                messageType:message.type,
+                createdAt: list.created_at,
+                _id: Date.now()* Math.random(),
+                unique: message.unique,
+                messageId: message.unique,
+                // sent: true,
+                // received: true,
+                type: "chat",
+                user: {
+                  _id: 2,
+                  name: route.params.name,
+                  avatar: route.params.profilePic,
+                },
+              };
+              this_chat.messages.splice(0, 0, mymes);
+              this_chat.message = 'IMAGE';
+              var newImage = {
+              url:message.content
+              };
+            this_chat.photos.push(newImage)
+            }
+          }
+          if (message.type == "video") {
   
-//             if(list.xml.includes(`from='${route.params.jid.substr(0,24)}`)){
-//               var mymes = {
-//                 content: message.content,
-//                 video: message.content,
-//                 messageType:message.type,
-//                 createdAt: list.created_at,
-//                 _id: Date.now()* Math.random(),
-//                 unique: message.unique,
-//                 messageId: message.unique,
-//                 // sent: true,
-//                 // received: true,
-//                 type: "chat",
-//                 user: {
-//                   _id: 1,
-//                   name: route.params.name,
-//                   avatar: route.params.profilePic,
-//                 },
-//               };
-//               this_chat.messages.splice(0, 0, mymes);
-//               this_chat.message = 'VIDEO';
-//             }else{
-//               var mymes = {
-//                 content: message.content,
-//                 video: message.content,
-//                 messageType:message.type,
-//                 createdAt: list.created_at,
-//                 _id: Date.now()* Math.random(),
-//                 unique: message.unique,
-//                 messageId: message.unique,
-//                 // sent: true,
-//                 // received: true,
-//                 type: "chat",
-//                 user: {
-//                   _id: 2,
-//                   name: route.params.name,
-//                   avatar: route.params.profilePic,
-//                 },
-//               };
-//               this_chat.messages.splice(0, 0, mymes);
-//               this_chat.message = 'VIDEO';
-//             }
-//           }
-//            if (message.type == "file") {
+            if(list.xml.includes(`from='${route.params.jid.substr(0,24)}`)){
+              var mymes = {
+                content: message.content,
+                video: message.content,
+                messageType:message.type,
+                createdAt: list.created_at,
+                _id: Date.now()* Math.random(),
+                unique: message.unique,
+                messageId: message.unique,
+                // sent: true,
+                // received: true,
+                type: "chat",
+                user: {
+                  _id: 1,
+                  name: route.params.name,
+                  avatar: route.params.profilePic,
+                },
+              };
+              this_chat.messages.splice(0, 0, mymes);
+              this_chat.message = 'VIDEO';
+            }else{
+              var mymes = {
+                content: message.content,
+                video: message.content,
+                messageType:message.type,
+                createdAt: list.created_at,
+                _id: Date.now()* Math.random(),
+                unique: message.unique,
+                messageId: message.unique,
+                // sent: true,
+                // received: true,
+                type: "chat",
+                user: {
+                  _id: 2,
+                  name: route.params.name,
+                  avatar: route.params.profilePic,
+                },
+              };
+              this_chat.messages.splice(0, 0, mymes);
+              this_chat.message = 'VIDEO';
+            }
+          }
+           if (message.type == "file") {
   
-//             if(list.xml.includes(`from='${route.params.jid.substr(0,24)}`)){
-//               var mymes = {
-//                 content: message.content,
-//                 document: message.content,
-//                 messageType:message.type,
-//                 text: message.content,
-//                 createdAt: list.created_at,
-//                 _id: Date.now()* Math.random(),
-//                 unique: message.unique,
-//                 messageId: message.unique,
-//                 // sent: true,
-//                 // received: true,
-//                 type: "chat",
-//                 user: {
-//                   _id: 1,
-//                   name: route.params.name,
-//                   avatar: route.params.profilePic,
-//                 },
-//               };
-//               this_chat.messages.splice(0, 0, mymes);
-//               this_chat.message = 'DOCUMENT';
-//             }else{
-//               var mymes = {
-//                 content: message.content,
-//                 document: message.content,
-//                 messageType:message.type,
-//                 text: message.content,
-//                 createdAt: list.created_at,
-//                 _id: Date.now()* Math.random(),
-//                 unique: message.unique,
-//                 messageId: message.unique,
-//                 // sent: true,
-//                 // received: true,
-//                 type: "chat",
-//                 user: {
-//                   _id: 2,
-//                   name: route.params.name,
-//                   avatar: route.params.profilePic,
-//                 },
-//               };
-//               this_chat.messages.splice(0, 0, mymes);
-//               this_chat.message = 'DOCUMENT';
-//             }
-//           }
-//           if (message.type == "deleteforboths") {
+            if(list.xml.includes(`from='${route.params.jid.substr(0,24)}`)){
+              var mymes = {
+                content: message.content,
+                document: message.content,
+                messageType:message.type,
+                text: message.content,
+                createdAt: list.created_at,
+                _id: Date.now()* Math.random(),
+                unique: message.unique,
+                messageId: message.unique,
+                // sent: true,
+                // received: true,
+                type: "chat",
+                user: {
+                  _id: 1,
+                  name: route.params.name,
+                  avatar: route.params.profilePic,
+                },
+              };
+              this_chat.messages.splice(0, 0, mymes);
+              this_chat.message = 'DOCUMENT';
+            }else{
+              var mymes = {
+                content: message.content,
+                document: message.content,
+                messageType:message.type,
+                text: message.content,
+                createdAt: list.created_at,
+                _id: Date.now()* Math.random(),
+                unique: message.unique,
+                messageId: message.unique,
+                // sent: true,
+                // received: true,
+                type: "chat",
+                user: {
+                  _id: 2,
+                  name: route.params.name,
+                  avatar: route.params.profilePic,
+                },
+              };
+              this_chat.messages.splice(0, 0, mymes);
+              this_chat.message = 'DOCUMENT';
+            }
+          }
+          if (message.type == "deleteforboths") {
   
-//             if(list.xml.includes(`from='${route.params.jid.substr(0,24)}`)){
-//               var mymes = {
-//                 content: message.content,
-//                 messageType:message.type,
-//                 delete: message.content,
-//                 text: message.content,
-//                 createdAt: list.created_at,
-//                 _id: Date.now()* Math.random(),
-//                 unique: message.unique,
-//                 messageId: message.unique,
-//                 // sent: true,
-//                 // received: true,
-//                 type: "chat",
-//                 user: {
-//                   _id: 1,
-//                   name: route.params.name,
-//                   avatar: route.params.profilePic,
-//                 },
-//               };
-//               this_chat.messages.splice(0, 0, mymes);
-//               this_chat.message = 'This message is deleted';
-//             }else{
-//               var mymes = {
-//                 content: message.content,
-//                 messageType:message.type,
-//                 delete: message.content,
-//                 text: message.content,
-//                 createdAt: list.created_at,
-//                 _id: Date.now()* Math.random(),
-//                 unique: message.unique,
-//                 messageId: message.unique,
-//                 // sent: true,
-//                 // received: true,
-//                 type: "chat",
-//                 user: {
-//                   _id: 2,
-//                   name: route.params.name,
-//                   avatar: route.params.profilePic,
-//                 },
-//               };
-//               this_chat.messages.splice(0, 0, mymes);
-//               this_chat.message = 'This message is deleted';
-//             }
-//           }
-//         })
+            if(list.xml.includes(`from='${route.params.jid.substr(0,24)}`)){
+              var mymes = {
+                content: message.content,
+                messageType:message.type,
+                delete: message.content,
+                text: message.content,
+                createdAt: list.created_at,
+                _id: Date.now()* Math.random(),
+                unique: message.unique,
+                messageId: message.unique,
+                // sent: true,
+                // received: true,
+                type: "chat",
+                user: {
+                  _id: 1,
+                  name: route.params.name,
+                  avatar: route.params.profilePic,
+                },
+              };
+              this_chat.messages.splice(0, 0, mymes);
+              this_chat.message = 'This message is deleted';
+            }else{
+              var mymes = {
+                content: message.content,
+                messageType:message.type,
+                delete: message.content,
+                text: message.content,
+                createdAt: list.created_at,
+                _id: Date.now()* Math.random(),
+                unique: message.unique,
+                messageId: message.unique,
+                // sent: true,
+                // received: true,
+                type: "chat",
+                user: {
+                  _id: 2,
+                  name: route.params.name,
+                  avatar: route.params.profilePic,
+                },
+              };
+              this_chat.messages.splice(0, 0, mymes);
+              this_chat.message = 'This message is deleted';
+            }
+          }
+        })
 
-//         this_chat.updatedAt = Date.now();
-//         this_chat.message = message[0].text;
-//         this_chat.name = route.params.name;
+        this_chat.updatedAt = Date.now();
+        this_chat.message = message[0].text;
+        this_chat.name = route.params.name;
 
-//         dispatcher({ type: 'UPDATEMESSAGES', messages_chat: this_chat.messages })
-//       }
-//         // dispatch({
-//         //   type: "SETMYMESSAGEMAIN",
-//         //   chat_roster_main: chat_roster_main,
-//         // });
+        dispatcher({ type: 'UPDATEMESSAGES', messages_chat: this_chat.messages })
+      }
+        // dispatch({
+        //   type: "SETMYMESSAGEMAIN",
+        //   chat_roster_main: chat_roster_main,
+        // });
   
   
-//       }).catch((err)=>{
-//         console.log(err)
-//       })
-//   }
+      }).catch((err)=>{
+        console.log(err)
+      })
+  }
 
   async function editName() {
     alert(ChatState.showEdit)
@@ -2810,6 +2810,11 @@ async function confirmCall(call){
       }
     }).then((resp) => {
       navigation.goBack()
+      if(route.params.setLastMessag || route.params.setLastMessageTime || route.params.setLastMessageTime || route.params.unreadNewCount){
+        route.params.setLastMessage('Click to send Message...')
+        route.params.setLastMessageTime(Date.now())
+        route.params.unreadNewCount(0)
+      }
       // dispatcher({ type: 'UPDATEMESSAGES', messages_chat: [] })
       chat_roster_main.forEach(list => {
         if (list.jid == route.params.jid) {
@@ -3352,7 +3357,12 @@ async function confirmCall(call){
       <View style={{ flexDirection: "row" }}>
         <View style={{flex:1,flexDirection:'row'}}>
         {
-  route.params.connection[0].charAt(0).toUpperCase() + route.params.connection[0].slice(1) == "Market" || route.params.connection[0].charAt(0).toUpperCase() + route.params.connection[0].slice(1) == "Friends" || route.params.connection[0].charAt(0).toUpperCase() + route.params.connection[0].slice(1) == "Announce" ?
+                     route.params.connection.length && route.params.connection.length > 0 ?
+
+
+
+                    
+  route.params.connection.length && route.params.connection[0].charAt(0).toUpperCase() + route.params.connection[0].slice(1) == "Market" || route.params.connection[0].charAt(0).toUpperCase() + route.params.connection[0].slice(1) == "Friends" || route.params.connection[0].charAt(0).toUpperCase() + route.params.connection[0].slice(1) == "Announce" ?
            
           <View style={{
               borderWidth: 1,
@@ -3372,9 +3382,14 @@ async function confirmCall(call){
             
             :
             <></>
+:
+<></>
+
+
+
         }
         {
-          route.params.connection.length > 1 ?
+           route.params.connection.length && route.params.connection.length > 1 ?
         route.params.connection[1] == "Market" || route.params.connection[1] == "Friends" || route.params.connection[1] == "Announce" ?
             <> 
             <View style={{
@@ -3400,7 +3415,7 @@ async function confirmCall(call){
         }
 
         {
-          route.params.connection.length > 2 ?
+           route.params.connection.length && route.params.connection.length > 2 ?
          route.params.connection[2] == "Market" || route.params.connection[2] == "Friends" || route.params.connection[2] == "Announce" ?
               <View style={{
                 borderWidth: 1,

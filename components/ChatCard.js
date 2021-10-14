@@ -246,6 +246,7 @@ var newc = item.unread;
                         >
                           <Text style={{ color: "#6FA4E9", padding: 5, fontSize: 10 }}>
                             {/* Market + */}
+                            
                             {I18n.t(item.connection[0])}
                             {
                               item.connection.length>1?

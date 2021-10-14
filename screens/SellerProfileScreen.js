@@ -210,11 +210,15 @@ async function showSnackReport(reason) {
 
 const renderPostCard = ({ item, index }) =>{
   return(
+    <>
+    {/* <Text>{String(item.Iliked)}</Text> */}
     <PostCard 
     item={item} 
     index={index} 
     banners={[]} 
+    bookmarked={item.bookmarked}
     navigation={navigation}/>
+    </>
   )
 }
 
@@ -658,14 +662,14 @@ Linking.openURL(url)
       var a = await axios.post(
         GLOBAL.BASE_URL+"market/othersRatings/" +
           route.params.userId,
+          {},
           {
             headers: {
               "Content-Type": "application/json",
               Authorization:
               'Bearer '+jwt
             },
-          },
-        {}
+          }
       );
       console.log('1')
       setBookmark(a.data.bookmarked)
@@ -947,6 +951,7 @@ const [isPartner,setIsPartner] = useState(false)
   }
 
   return (
+    <View style={{flex:1,backgroundColor:'#6FA4E9'}}>
     <ScrollView>
       <RBSheet
         ref={refRBSheet}
@@ -1647,6 +1652,7 @@ const [isPartner,setIsPartner] = useState(false)
                 <Rating
                   fractions="1"
                   ratingColor="#000"
+                  readonly={true}
                   tintColor="#6FA4E9"
                   startingValue={ProfileState.currentprofile.rating}
                   imageSize={22}
@@ -2254,6 +2260,7 @@ const [isPartner,setIsPartner] = useState(false)
         </View>
       </View>
     </ScrollView>
+    </View>
   );
 };
 

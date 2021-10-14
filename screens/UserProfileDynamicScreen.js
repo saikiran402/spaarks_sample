@@ -487,12 +487,16 @@ const UserProfileDynamicScreen = ({ navigation,route,profilePic,token,name,userI
     
  const renderPostCard = ({ item, index }) =>{
   return(
+    <>
+          {/* <Text>{String(item.bookmarked)}</Text> */}
     <PostCard 
     item={item} 
     index={index} 
     banners={[]} 
+    bookmarked={item.bookmarked}
     showBanner={false}
     navigation={navigation}/>
+    </>
   )
 }
 

@@ -840,6 +840,7 @@ async function onGuideLinesScreen(){
     <PostCard 
     item={item} 
     index={index} 
+    bookmarked={item.bookmarked}
     banners={[]} 
     showBanner={false}
     navigation={navigation}

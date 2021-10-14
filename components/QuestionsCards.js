@@ -20,7 +20,7 @@ const QuestionsScreen = ({navigation,route,isConnected }) => {
     if(qno == 1){
       if(isConnected){
         if(String(jwt)!="null"){
-         navigation.navigate('NewInfoStepperScreen', { questionNo: 1, question: I18n.t('Announce something'), excluding: [], featureName: 'showtime', mediaP: [], mediaV: [] })
+         navigation.navigate('NewInfoStepperScreen', { questionNo: 1, question: I18n.t('Post something Social'), excluding: [], featureName: 'showtime', mediaP: [], mediaV: [] })
       }else{
         Login.current.open()
       }
@@ -71,7 +71,7 @@ const QuestionsScreen = ({navigation,route,isConnected }) => {
 <FlatList
 horizontal
 showsHorizontalScrollIndicator={false}
-data={[{image:require('../assets/que/q1.png'),name:'Announce Something',desc:'Ques_des4'},
+data={[{image:require('../assets/que/q1.png'),name:'Post something Social',desc:'SocialText'},
 {image:require('../assets/que/q2.png'),name:"Make Friends",desc:'Ques_des7'},
 {image:require('../assets/que/q3.png'),name:'I give a Service',desc:'Ques_des1'},
 {image:require('../assets/que/q4.png'),name:'I have Something to Sell',desc:'Ques_des2'},

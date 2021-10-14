@@ -742,6 +742,7 @@ const SearchScreen = ({ navigation,Userpreferences,isConnected,route }) => {
       item={item} 
       index={index} 
       key={index}
+      bookmarked={item.bookmarked}
       banners={[]} 
       navigation={navigation}/>
       </>

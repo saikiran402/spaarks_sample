@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { View, Text, Button, StyleSheet, TouchableOpacity, Image, Pressable, KeyboardAvoidingView,Keyboard ,TouchableWithoutFeedback} from 'react-native';
+import React, { useEffect, useState } from 'react';
+import { View, Text, Button, StyleSheet,Alert,Linking, TouchableOpacity, Image, Pressable, KeyboardAvoidingView,Keyboard ,TouchableWithoutFeedback} from 'react-native';
 import Clipboard from '@react-native-community/clipboard';
 import Snackbar from 'react-native-snackbar';
 import { ScrollView } from "react-native";
@@ -14,6 +14,9 @@ import { Rating, AirbnbRating, Divider } from "react-native-elements";
 import Textarea from "react-native-textarea";
 import { Dimensions } from 'react-native';
 import I18n from '../src/i18n';
+import { checkPermission } from 'react-native-location';
+import {requestMultiple, PERMISSIONS} from 'react-native-permissions';
+
 const ScanQrScreen = ({ navigation, route, token, isConnected }) => {
 
   const [content, setContent] = useState("");
@@ -22,6 +25,31 @@ const ScanQrScreen = ({ navigation, route, token, isConnected }) => {
   const [currentRating, setCurrentRating] = useState(null)
   const [hasPermission, setHasPermission] = useState("granted");
 
+
+
+  async function checkPermission(){
+    requestMultiple([PERMISSIONS.IOS.CAMERA]).then((statuses) => {
+      console.log('Camera', statuses[PERMISSIONS.IOS.CAMERA]);
+      if(statuses[PERMISSIONS.IOS.CAMERA] == 'blocked'){
+        Alert.alert(
+          "Can not use camera",
+        "Please allow Spaarks to access your camera in 'Settings > Privacy > Camera",
+          [
+            {
+              text: "Cancel",
+              onPress: () => console.log("Cancel Pressed"),
+              style: "cancel"
+            },
+            { text: "Settings", onPress: () => Linking.openURL('app-settings:') }
+          ]
+        );
+      }
+      // console.log('FaceID', statuses[PERMISSIONS.IOS.FACE_ID]);
+    });
+  }
+  useEffect(()=>{
+    checkPermission()
+  },[])
 
   function updateText(a) {
     setContent(a);

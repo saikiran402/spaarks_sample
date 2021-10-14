@@ -671,8 +671,8 @@ const HomeScreen = ({navigation,route,Userpreferences,selectedPreference,profile
     region: {
       latitude: 17.62938671242907,
       longitude: 78.4354486029795,
-      latitudeDelta: 0.0004864195044303443,
-      longitudeDelta: 0.00040142817690068,
+      latitudeDelta: 10.14864195044303443,
+      longitudeDelta: 10.140142817690068,
     },
     categories: [
       {
@@ -714,8 +714,8 @@ const HomeScreen = ({navigation,route,Userpreferences,selectedPreference,profile
     region: {
       latitude: 17.62938671242907,
       longitude: 78.4354486029795,
-      latitudeDelta: 10.14864195044303443,
-      longitudeDelta: 10.140142817690068,
+      latitudeDelta: 20.14864195044303443,
+      longitudeDelta: 20.140142817690068,
     },
     temperature:0,
     showEffect:'none',
@@ -860,29 +860,29 @@ const HomeScreen = ({navigation,route,Userpreferences,selectedPreference,profile
       i++;
       Mdata.push(b)
     })
-    var c = {
-      coordinate: {
-        latitude: latitudes,
-        longitude: longitudes,
-      },
-      title: "Amazing Food Place",
-      distance: 0,
-      name: "list.uservisibility.name",
-      item: {},
-      isPost:false,
-      description: "This is the best food place",
-      image: "list.uservisibility.profilePic",
-      rating: 4,
-      reviews: 99,
-    }
-    Mdata.splice(0,0,c)
+    // var c = {
+    //   coordinate: {
+    //     latitude: latitudes,
+    //     longitude: longitudes,
+    //   },
+    //   title: "Amazing Food Place",
+    //   distance: 0,
+    //   name: "list.uservisibility.name",
+    //   item: {},
+    //   isPost:false,
+    //   description: "This is the best food place",
+    //   image: "list.uservisibility.profilePic",
+    //   rating: 4,
+    //   reviews: 99,
+    // }
+    // Mdata.splice(0,0,c)
     console.log('lklklklklklklkl', Mdata)
     dispatcher({ type: "SETPOSTS", posts: Mdata,
     region:{
       latitude: latitudes,
       longitude: longitudes,
-      latitudeDelta: 0.00092343,
-      longitudeDelta: 0.00092343
+      latitudeDelta: 0.00101092343,
+      longitudeDelta: 0.00101092343
     },
     coordinate: {
       latitude: latitudes,
@@ -1252,7 +1252,7 @@ async function getDataForPill(c,s){
       const regionTimeout = setTimeout(() => {
         if (mapIndex !== index) {
           mapIndex = index;
-          const { coordinate } = ChatState.posts[index];
+          const { coordinate } = ChatState.posts[index-1];
           _map.current.animateToRegion(
             {
               ...coordinate,
@@ -1408,12 +1408,24 @@ const [selectedRadius,setSelectedRadius] = useState(5000)
         ref={_map}
         initialRegion={ChatState.region}
         style={styles.container}
+        // showsMyLocationButton={true}
+    showsCompass={true}
+    showsTraffic={true}
+    showsUserLocation={true}
+    showsIndoors={true}
+  //onPanDrag={e => console.log(e.nativeEvent)}
+  // followsUserLocation={true}
+  showsBuildings={true}
+  showsMyLocationButton={true}
+  showsScale={true}
+
+  // showsMyLocationButton={true}
         // provider={PROVIDER_GOOGLE}
         customMapStyle={theme.dark ? mapDarkStyle : mapDarkStyle}
-        // onLayout={() => { this.mark.showCallout(); }}
+        onLayout={() => { this.mark.showCallout(); }}
       >
    
-        {
+        {/* {
           ChatState.mapIcons.map((list, i) =>(
             <MapView.Marker key={'me'} coordinate={{
               latitude: list.latitude,
@@ -1422,8 +1434,8 @@ const [selectedRadius,setSelectedRadius] = useState(5000)
                <Image source={{uri: list.image }} style={{height:list.imageSize_h,width:list.imageSize_w}} />
                </MapView.Marker>
           ))
-        }
-         <MapView.Marker key={'me'} ref={ref => { this.mark = ref; }} coordinate={ChatState.coordinate} onPress={(e) => onMarkerPress(e)}  identifier="Marker1" pinColor={"blue"} title={I18n.t("Your Location")} identifier={"Your Location"} />
+        } */}
+         {/* <MapView.Marker key={'me'} ref={ref => { this.mark = ref; }} coordinate={ChatState.coordinate} onPress={(e) => onMarkerPress(e)}  identifier="Marker1" pinColor={"blue"} title={I18n.t("Your Location")} identifier={"Your Location"} /> */}
          <MapView.Circle center={ChatState.coordinate} radius={selectedRadius}
                           strokeWidth={0.5}
                 strokeColor={'#448AFF'}
@@ -1442,7 +1454,7 @@ const [selectedRadius,setSelectedRadius] = useState(5000)
               ],
             };
             return (
-              <MapView.Marker key={index} coordinate={marker.coordinate} onPress={(e) => onMarkerPress(e)}  identifier="Marker1" pinColor={"red"}  coordinate={marker.coordinate} />
+              <MapView.Marker key={index} coordinate={marker.coordinate} onPress={(e) => onMarkerPress(e)}  identifier="Marker1" title={marker.name+"'s Location"}  pinColor={"red"}  coordinate={marker.coordinate} />
             );
           }
     
@@ -1644,7 +1656,7 @@ const [selectedRadius,setSelectedRadius] = useState(5000)
         scrollEventThrottle={1}
         showsHorizontalScrollIndicator={false}
         snapToInterval={CARD_WIDTH + 20}
-        snapToAlignment="center"
+        // snapToAlignment="center"
         style={styles.scrollView}
         contentInset={{
           top: 0,
@@ -1866,7 +1878,7 @@ const [selectedRadius,setSelectedRadius] = useState(5000)
                   <Text style={{ margin: 0 }} numberOfLines={1}>{"Swipe left and explore Spaarks near you."}</Text>
                   
 <View style={{flexDirection:'row'}}>
-<Text style={{ marginTop: 26}}>How Explore Works. </Text><TouchableOpacity onPress={()=>navigation.navigate('ExploreNearby')}><Text style={{ marginTop: 26,color:'#64cdff' }} numberOfLines={1}>{"Learn More."}</Text></TouchableOpacity>
+<Text style={{ marginTop: 26}}>How Explore Works. </Text><TouchableOpacity onPress={()=>navigation.navigate('ExploreNearby')}><Text style={{ marginTop: 26,color:'#6fa4e9' }} numberOfLines={1}>{"Learn More."}</Text></TouchableOpacity>
 
 </View>
                 </View>
